@@ -15,11 +15,11 @@ public class SpawnBird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        OnClick();
     }
     void OnClick()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Input.mousePosition;
             Instantiate(prefab, mousePos, Quaternion.identity);
