@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private float _movement;
+    private Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         HorizontalMovement();
         VerticalMovement();
         Rotation();
+        SetAnimations();
     }
     private void HorizontalMovement()
     {
@@ -41,5 +44,9 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = _movement > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
         }
+    }
+    private void SetAnimations()
+    {
+        _animator.SetFloat("horizontalSpeed", Mathf.Abs(_movement * MovementSpeed));
     }
 }
